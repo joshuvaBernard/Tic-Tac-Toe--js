@@ -61,13 +61,13 @@ const emptySquares = function () {
   return origBoard.filter((s) => typeof s == "number");
 };
 const bestSpot = function () {
-  // if (this.gameChoice == 2) {
-  //   console.log("gamechoice hard");
-  // return minimax(origBoard, aiPlayer).index;
-  // } else {
-  //   console.log("game choice easy");
-  //   return emptySquares()[0];
-  return minimax(origBoard, aiPlayer).index;
+  if (easyOrHard == 2) {
+    console.log("gamechoice hard");
+    return minimax(origBoard, aiPlayer).index;
+  } else {
+    console.log("game choice easy");
+    return emptySquares()[0];
+  }
 };
 const checkTie = function () {
   if (emptySquares().length == 0) {
@@ -136,4 +136,21 @@ let aiPlayer = "X";
 if (charChoice == "X") {
   aiPlayer = "O";
 }
+const computerGameChoicePrompt = function () {
+  let computerGameChoice = Number(
+    prompt("1. Easy \n2. Hard\n Enter the number below")
+  );
+  if (computerGameChoice == "1" || computerGameChoice == 1) {
+    console.log("one player easy");
+    return computerGameChoice;
+  } else if (computerGameChoice == "2" || computerGameChoice == 2) {
+    console.log("one player hard");
+    return computerGameChoice;
+  } else {
+    alert("Enter a vail choice!");
+    computerGameChoicePrompt();
+  }
+};
+
+let easyOrHard = computerGameChoicePrompt();
 computerGame();
