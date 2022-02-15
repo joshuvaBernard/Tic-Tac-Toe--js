@@ -152,5 +152,19 @@ const computerGameChoicePrompt = function () {
   }
 };
 
-let easyOrHard = computerGameChoicePrompt();
-computerGame();
+let gameChoice = Number(
+  prompt("1. One player \n2. Two player\n Enter the number below")
+);
+let easyOrHard;
+//single player
+if (gameChoice == 1 || gameChoice == "1") {
+  easyOrHard = computerGameChoicePrompt();
+  computerGame();
+}
+//double player
+else if (gameChoice == "2" || gameChoice == 2) {
+  console.log("you clicked two player, plese wait for updates!🤗");
+} else {
+  alert("Enter a vail choice!");
+  gameChoicePrompt();
+}
